@@ -1,0 +1,19 @@
+version: '3'
+services: # build artifacts
+    # The CFS base image is simply a ubuntu 20.04 image containing the required build tools
+    cfs-base-image:
+        image: cfs-base-image
+        build:
+            context: .
+            dockerfile: cfs-base-image.dockerfile
+        
+    
+    # The HomeSat image that actually stores and runs the project itself
+    homesat:
+        build:
+            context: .
+            dockerfile: homesat.dockerfile
+        depends_on: 
+        - cfs-base-image
+        # After CFS 289f8c0 (PSP 12e2607), requires privileged access for i.e. pipe creation and max queue depth errors
+        privileged: true
