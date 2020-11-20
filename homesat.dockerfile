@@ -1,10 +1,10 @@
 FROM cfs-base-image:latest
 
 # Write all project files to the container
-COPY ./ /cfs
+COPY ./ /HomeSat
 
 # Place all work in this directory
-WORKDIR /cfs
+WORKDIR /HomeSat
 
 # Prepare PC-linux build 
 RUN cp cfe/cmake/Makefile.sample Makefile
