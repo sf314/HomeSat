@@ -3,6 +3,41 @@
 [![LGTM Grade](https://img.shields.io/lgtm/grade/python/github/nasa/cFS)](https://lgtm.com/projects/g/nasa/cFS/alerts/?mode=list)
 [![LGTM Grade](https://img.shields.io/lgtm/grade/cpp/github/nasa/cFS)](https://lgtm.com/projects/g/nasa/cFS/alerts/?mode=list)
 
+# HomeSat - Built on NASA CFS
+
+The goal of HomeSat is to apply flight software architecture to an in-home,
+headless, and autonomous telemetry collection device. This means that the 
+chosen device (a Raspberry Pi 3) acts as a sort of "satellite", that should 
+perform the following basic functions:
+
+- collect and store telemetry
+- transmit telemetry at regular intervals to a ground station
+- respond to ground station commands
+
+Just like with othe aerospace projects, i.e. [CanSat](http://www.cansatcompetition.com)
+and [Phoenix](https://phxcubesat.asu.edu), HomeSat should use a rigidly defined
+Command and Data Handling (CDH) subsystem for communication, and separate 
+applications for each hardware module. The publish-subscribe model, as defined
+by CFS, will be used for data transfer between applications.
+
+## HomeSat Applications
+
+HomeSat's functionality will be defined entirely by its apps. A single main 
+application will be responsible for coordinating the satellite's high-level
+operations, and smaller applications will constitute the major subsystems. 
+
+Initially, HomeSat will start off as a single application, with submodule 
+functionality broken out into smaller files within the application. 
+
+The planned set of apps will be as follows:
+- Main (CDH)
+- Radio
+- Telemetry (gathering and reporting)
+- Scheduler
+- Shell
+
+---
+
 # Core Flight System - BUNDLE
 
 The Core Flight System (cFS) is a generic flight software architecture framework used on flagship spacecraft, human spacecraft, cubesats, and Raspberry Pi.  This repository is a bundle of submodules that make up the cFS framework.  Note the "lab" apps are intended as examples only, and enable this bundle to build, execute, receive commands, and send telemetry.  This is not a flight distribution, which is typically made up of the cFE, OSAL, PSP, and a selection of flight apps that correspond to specific mission requirements.
